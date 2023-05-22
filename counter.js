@@ -18,13 +18,16 @@ var copy = [
   "WEBGL",
 ]
 
+let myEle = document.querySelector("#matterC")
+console.log(myEle)
+
 var two = new Two({
   type: Two.Types.canvas,
   fullscreen: true,
   autostart: true,
-}).appendTo(document.body)
+}).appendTo(myEle)
 
-document.body.style.backgroundColor = "black"
+myEle.style.backgroundColor = "black"
 var solver = Matter.Engine.create()
 solver.world.gravity.y = 1
 
@@ -70,7 +73,7 @@ two.bind("resize", resize).bind("update", update)
 
 function addMouseInteraction() {
   // add mouse control
-  var mouse = Matter.Mouse.create(document.body)
+  var mouse = Matter.Mouse.create(myEle)
   var mouseConstraint = Matter.MouseConstraint.create(solver, {
     mouse: mouse,
     constraint: {
